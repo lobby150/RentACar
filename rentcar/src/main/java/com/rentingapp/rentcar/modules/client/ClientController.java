@@ -11,23 +11,23 @@ public class ClientController {
     @Autowired
     ClientService clientService;
     @PostMapping("/add")
-    private Client addClient(@RequestBody Client newClient)
+    public Client addClient(@RequestBody Client newClient)
     {
         return clientService.addClient(newClient);
 
     }
     @GetMapping("/getAll")
-    private Iterable<Client> getCars()
+    public Iterable<Client> getCars()
     {
         return clientService.getClients();
     }
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> deleteCar(@PathVariable int id)
+    public ResponseEntity<?> deleteCar(@PathVariable int id)
     {
         return clientService.deleteClient(id);
     }
     @GetMapping("/{id}")
-    private ResponseEntity<?> getCar(@PathVariable int id)
+    public ResponseEntity<?> getCar(@PathVariable int id)
     {
         return clientService.getClient(id);
     }
