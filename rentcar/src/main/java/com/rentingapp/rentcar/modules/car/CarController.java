@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/car")
 public class CarController {
     @Autowired
-    private CarService carService;
+    public CarService carService;
     @PostMapping("/add")
-    private Car addCar(@RequestBody Car newCar)
+    public Car addCar(@RequestBody Car newCar)
     {
         return carService.addCar(newCar);
 
     }
     @GetMapping("/getAll")
-    private Iterable<Car> getCars()
+    public Iterable<Car> getCars()
     {
         return carService.getCars();
     }
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> deleteCar(@PathVariable int id)
+    public ResponseEntity<?> deleteCar(@PathVariable int id)
     {
         return carService.deleteCar(id);
     }
     @GetMapping("/{id}")
-    private ResponseEntity<?> getCar(@PathVariable int id)
+    public ResponseEntity<?> getCar(@PathVariable int id)
     {
         return carService.getCar(id);
     }
