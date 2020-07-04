@@ -1,46 +1,50 @@
 package com.rentingapp.rentcar.modules.car;
 
-import org.hibernate.action.internal.EntityActionVetoException;
+import com.rentingapp.rentcar.modules.car.entity.Car;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.NoSuchElementException;
-
+@RequiredArgsConstructor
 @Service
 public class CarService {
-    @Autowired
-    private CarRepository carRepository;
-    public Iterable<Car> getCars()
+
+    private final CarRepository carRepository;
+    Iterable<Car> getCars()
     {
      return  carRepository.findAll();
     }
-    public Car addCar(Car car)
+    Car addCar(Car car)
     {
         return carRepository.save(car);
     }
-    public ResponseEntity<?> deleteCar(int id){
+    ResponseEntity<String> deleteCar(int id){
        try{
+           Car car = carRepository.findById(id).orElseThrow();
+           if(car.isRented())
+           {
+               return new ResponseEntity<>("This car is currently rented!",HttpStatus.OK);
+           }
            carRepository.deleteById(id);
-           return new ResponseEntity<String>("Car with this ID was deleted", HttpStatus.OK);
+           return new ResponseEntity<>("Car with this ID was deleted", HttpStatus.OK);
        } catch (EmptyResultDataAccessException e)
        {
-           return new ResponseEntity<String>("Car with this ID doesn't exist", HttpStatus.OK);
+           return new ResponseEntity<>("Car with this ID doesn't exist", HttpStatus.OK);
        }
     }
-    public ResponseEntity<?> getCar(int id)
+    ResponseEntity<?> getCar(int id)
     {
         try{
-            Car car = carRepository.findById(id).get();
-            return new ResponseEntity<Car>(car,HttpStatus.OK);
+            Car car = carRepository.findById(id).orElseThrow();
+            return new ResponseEntity<>(car,HttpStatus.OK);
         }
         catch(NoSuchElementException e)
         {
-            return new ResponseEntity<String>("Car with this ID doesn't exist",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Car with this ID doesn't exist",HttpStatus.NOT_FOUND);
         }
     }
 }

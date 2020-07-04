@@ -1,33 +1,35 @@
 package com.rentingapp.rentcar.modules.car;
 
+import com.rentingapp.rentcar.modules.car.entity.Car;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/car")
 public class CarController {
-    @Autowired
-    public CarService carService;
+
+    private final CarService carService;
     @PostMapping("/add")
-    public Car addCar(@RequestBody Car newCar)
+    Car addCar(@RequestBody Car newCar)
     {
         return carService.addCar(newCar);
 
     }
-    @GetMapping("/getAll")
-    public Iterable<Car> getCars()
+    @GetMapping("/get-all")
+    Iterable<Car> getCars()
     {
         return carService.getCars();
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteCar(@PathVariable int id)
+    ResponseEntity<?> deleteCar(@PathVariable int id)
     {
         return carService.deleteCar(id);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCar(@PathVariable int id)
+    ResponseEntity<?> getCar(@PathVariable int id)
     {
         return carService.getCar(id);
     }

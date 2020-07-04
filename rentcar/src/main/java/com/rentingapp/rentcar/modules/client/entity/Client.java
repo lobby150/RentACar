@@ -1,4 +1,4 @@
-package com.rentingapp.rentcar.modules.client;
+package com.rentingapp.rentcar.modules.client.entity;
 
 import lombok.Getter;
 import lombok.Setter;
