@@ -1,5 +1,6 @@
 package com.rentingapp.rentcar.modules.client;
 
+import com.rentingapp.rentcar.modules.client.entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

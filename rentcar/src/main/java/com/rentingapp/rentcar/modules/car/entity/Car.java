@@ -1,4 +1,4 @@
-package com.rentingapp.rentcar.modules.car;
+package com.rentingapp.rentcar.modules.car.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 @Entity
 @Getter
+@Setter
 public class Car
 {
     @Id
