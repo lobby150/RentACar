@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Setter
 public class Renting {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) public int rentingId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int rentingId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carId")
     public Car car;
@@ -25,5 +26,7 @@ public class Renting {
         this.car = car;
         this.client = client;
     }
-    public Renting(){}
+
+    public Renting() {
+    }
 }

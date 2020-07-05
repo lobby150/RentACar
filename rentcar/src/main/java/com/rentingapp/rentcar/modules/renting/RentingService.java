@@ -6,7 +6,6 @@ import com.rentingapp.rentcar.modules.client.entity.Client;
 import com.rentingapp.rentcar.modules.client.ClientRepository;
 import com.rentingapp.rentcar.modules.renting.entity.Renting;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -48,20 +47,20 @@ public class RentingService {
             return new ResponseEntity<>("There is no such renting with ID: " + id, HttpStatus.NOT_FOUND);
         }
     }
-    Iterable<Renting> getAllRentings(){
+
+    Iterable<Renting> getAllRentings() {
         return rentingRepository.findAll();
     }
 
 
-    ResponseEntity<String> deleteRenting(int id){
-        try{
+    ResponseEntity<String> deleteRenting(int id) {
+        try {
             Renting renting = rentingRepository.findById(id).orElseThrow();
             renting.car.setRented(false);
             renting.client.setRenting(false);
             rentingRepository.deleteById(id);
             return new ResponseEntity<>("Renting with ID: " + id + " was deleted", HttpStatus.OK);
-        } catch (NoSuchElementException e)
-        {
+        } catch (NoSuchElementException e) {
             return new ResponseEntity<>("Renting with ID: " + id + " doesn't exist", HttpStatus.OK);
         }
     }

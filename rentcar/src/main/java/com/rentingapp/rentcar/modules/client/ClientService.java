@@ -3,7 +3,7 @@ package com.rentingapp.rentcar.modules.client;
 
 import com.rentingapp.rentcar.modules.client.entity.Client;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
