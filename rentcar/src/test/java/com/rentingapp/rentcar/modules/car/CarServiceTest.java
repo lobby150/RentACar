@@ -52,7 +52,7 @@ class CarServiceTest {
     }
 
     @Test
-    public void testFindAll()
+    public void whenFindAllThenSizeCorrect()
     {
         int count =0;
         Iterable<Car> cars = carService.getCars();
@@ -66,7 +66,7 @@ class CarServiceTest {
     }
 
     @Test
-    public void testFindById1ThenReturnCar()
+    public void whenFindById1ThenReturnCar()
     {
         Car found = carRepository.getOne(1);
         assertNotNull(found);
