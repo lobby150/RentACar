@@ -1,5 +1,6 @@
 package com.rentingapp.rentcar.modules.client.entity;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,6 @@ public class Client
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) public int clientId;
-
     public String firstName;
     public String surname;
     @GeneratedValue(strategy = GenerationType.AUTO)
