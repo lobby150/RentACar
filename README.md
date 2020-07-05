@@ -27,7 +27,7 @@ Project is created with:
 127.0.0.1:8080/renting/get-all - get list of all current rentings
 127.0.0.1:8080/renting/add - add new renting in JSON format {car, client} for example {"car": "1", "client": "1"}
 127.0.0.1:8080/renting/{id} - get renting by id
-127.0.0.1:8080/renting/delete/{id} - delete a renting
+127.0.0.1:8080/renting/delete/{id} - delete a renting (it means that a client is deciding to give away rented car)
 ```
 
 ## Setup
