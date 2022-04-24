@@ -1,4 +1,4 @@
-# XTMTest
+# RentACar
 Application for renting a car (REST API)
 
 Works on 127.0.0.1:8080
